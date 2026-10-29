@@ -1,3 +1,10 @@
 body {
   background-color: aqua;
 }
+
+img {
+  display: block; /* This unlocks width and height */
+  width: 50%; /* Sets it to take up 50% of the screen/container width */
+  height: auto; /* Keeps proportions correct so it doesn't warp */
+  margin: 0 auto; /* Optional: Centers the image on the page */
+}
