@@ -26,6 +26,31 @@ const server = {
   },
 };
 
+//get map +promisall
+const namesToSearch = ["Odin", "Thor", "Freyja"];
+
+const getPromises = async (names) => {
+  try {
+    const response = await server.getPeople(); //array getting first from prmise
+    // console.log(response);
+    const promiseArr = names.map(async (params) => {
+      const findPerson = response.find((person) => person.name === params);
+      return findPerson;
+    });
+    const results = await Promise.all(promiseArr);
+    return results;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+// Calling it: map is not for obj where in parameter server defined so arr
+getPromises(namesToSearch).then((results) => {
+  console.log(results);
+  // Output:
+  // [ { name: 'Odin', age: 20 }, { name: 'Thor', age: 35 } ]
+});
+
 const getPersonsInfo = async (name) => {
   // do something asynchronously and return a promise
   // 1. Wait for the server to return the array of people
