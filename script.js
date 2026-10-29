@@ -75,3 +75,22 @@ getPersonsInfo("Odin")
   .catch((err) => {
     console.log(err);
   });
+
+//fetch api await async with promise with all json return promise etc
+
+const img = document.querySelector("img");
+
+async function getDog() {
+  try {
+    // This API is completely public and requires no key!
+    const response = await fetch("https://dog.ceo/api/breeds/image/random");
+    const dogData = await response.json();
+
+    // The Dog API returns a simple object: { message: "URL_HERE", status: "success" }
+    img.src = dogData.message;
+  } catch (error) {
+    console.error("Something went wrong:", error);
+  }
+}
+
+getDog();
